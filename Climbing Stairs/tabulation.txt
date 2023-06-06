@@ -1,1 +1,21 @@
 
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int[] dp;
+	public static int countDistinctWayToClimbStair(long nStairs) {
+        if(nStairs==0)return 1;
+        dp = new int[(int)nStairs+1];
+        Arrays.fill(dp,-1);
+		// Write your code here.
+        return getCount((int)nStairs);
+	}
+    public static int getCount(int n) {
+        dp[0]=1;
+        dp[1]=1;
+        for(int i=2;i<=n;i++){
+            dp[i] = dp[i-1]%1000000007+dp[i-2]%1000000007;
+        }
+        return dp[n]%1000000007;
+    }
+}
