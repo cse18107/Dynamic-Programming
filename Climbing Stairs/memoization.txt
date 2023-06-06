@@ -1,1 +1,18 @@
 
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int[] dp;
+	public static int countDistinctWayToClimbStair(long nStairs) {
+        dp = new int[(int)nStairs+1];
+        Arrays.fill(dp,-1);
+		// Write your code here.
+        return getCount(nStairs);
+	}
+    public static int getCount(long n) {
+        if(n==0)return 1;
+        if(n<0) return 0;
+        if(dp[(int)n]!=-1)return dp[(int)n];
+        return dp[(int)n]=countDistinctWayToClimbStair(n-1)+countDistinctWayToClimbStair(n-2);
+    }
+}
